@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+
+.choiceBtn{
+    line-height: 30px;
+    width: 150px;
+}
+#gameDiv{
+    font-family: 'Times New Roman', bold;
+    border: 3px solid;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: blue;
+    text-align: center;
+}
+#playerText{
+    color:aqua;
+}
+#cpuText{
+    color: aqua;
+}
+
+#scoreText{
+    color: aqua;
+}
+</style>
+
+<body>
+    <div id="gameDiv">
+        <h1 class="gameText" id="playerText">Player: </h1>
+        <h1 class="gameText" id="cpuText">Computer: </h1>
+        <h1 class="gameText" id="scoreText">Result: </h1>
+
+        <button class="choices">ROCK</button>
+        <button class="choices">PAPER</button>
+        <button class="choices">SCISSORS</button>
+    </div>
+
+<script >
+        
+
+const playerText = document.querySelector("#playerText");
+const computerText = document.querySelector("#cpuText");
+const resultText = document.querySelector("#scoreText");
+const choices = document.querySelectorAll(".choices");
+let player;
+let cpu;
+let result;
+
+choices.forEach(button => button.addEventListener("click", () => {
+
+    player = button.textContent;
+    computerTurn();
+    playerText.textContent = `Player: ${player}`;
+    computerText.textContent = `Computer: ${cpu}`;
+    resultText.textContent = checkWinner();
+}));
+
+function computerTurn(){
+
+    const randNum = Math.floor(Math.random() * 3) + 1;
+
+    switch(randNum){
+      case 1:
+        cpu = "ROCK";
+        break;
+      case 2:
+        cpu = "PAPER";
+        break;
+      case 3:
+        cpu = "SCISSORS";
+        break;
+    }
+}
+function checkWinner(){
+    if(player == cpu){
+      return "It's a tie !";
+    }
+    else if (player == "ROCK"){
+      if(cpu == "SCISSORS"){
+        return "PLAYER WON !";
+      }
+      else{
+        return "CPU WON !";
+      }
+    }
+
+    else if (player == "PAPER"){
+      if(cpu == "ROCK"){
+        return "PLAYER WON !";
+      }
+      else{
+        return "CPU WON !";
+      }
+    }
+
+    else if (player == "SCISSORS"){
+      if(cpu == "PAPER"){
+        return "PLAYER WON !";
+      }
+      else{
+        return "CPU WON !";
+      }
+    }
+
+    
+
+    
+}
+
+
+
+    </script>
+</body>
+</html>
